@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta tags PWA -->
+    <meta name="theme-color" content="#333333" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>TASAPP</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json" />
+
+    <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link
+      rel="apple-touch-startup-image"
+      type="image/x-icon"
+      href="/img/favicon.ico"
+    />
+    <!-- Scripts -->
+    <script src="js/src/models/Movement.js" defer></script>
+    <script src="js/src/models/Expense.js" defer></script>
+    <script src="js/src/models/Income.js" defer></script>
+    <script src="js/src/utils/CurrencyFormat.js" defer></script>
+    <script src="js/src/utils/HTMLCreator.js" defer></script>
+    <script src="js/src/MovementManager.js" defer></script>
+    <script src="js/src/View.js" defer></script>
+    <script src="js/App.js" defer></script>
+    <script src="./register.js" defer></script>
+    <script src="./sw.js" defer></script>
+  </head>
+  <body>
+    <div class="cabecero">
+      <div class="presupuesto">
+        <div class="presupuesto_titulo">Presupuesto Disponible</div>
+        <div class="presupuesto_valor" id="presupuesto">+ 2,000,000</div>
+        <div class="presupuesto_ingreso limpiarEstilos">
+          <div class="presupuesto_ingreso--texto">Ingreso</div>
+          <div class="derecha">
+            <div class="presupuesto_ingreso--valor" id="ingresos">
+              +4,000.00
+            </div>
+            <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
+          </div>
+        </div>
+        <div class="presupuesto_egreso limpiarEstilos">
+          <div class="presupuesto_egreso--texto">Ingreso</div>
+          <div class="derecha limpiarEstilos">
+            <div class="presupuesto_egreso--valor" id="egresos">-1,000.00</div>
+            <div class="presupuesto_egreso--porcentaje" id="porcentaje">
+              45%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form id="formid">
+      <div class="agregar">
+        <div class="agregar_contenedor">
+          <select id="type" class="agregar_tipo">
+            <option value="income" selected>+</option>
+            <option value="expense">-</option>
+          </select>
+          <input
+            type="text"
+            class="agregar_descripcion"
+            placeholder="Agregar descripción"
+            id="description"
+          />
+          <input
+            type="number"
+            id="value"
+            class="agregar_valor"
+            placeholder="Valor"
+            step="any"
+          />
+          <button type="submit" class="agregar_btn">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="contenedor limpiarEstilos">
+      <div class="ingreso">
+        <h2 class="ingreso_titulo">Ingresos</h2>
+        <div id="incomes-list"></div>
+      </div>
+      <div class="egreso">
+        <h2 class="egreso_titulo">Egresos</h2>
+        <div id="expenses-list"></div>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
